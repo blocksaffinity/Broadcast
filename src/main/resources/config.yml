@@ -1,0 +1,13 @@
+behaviour:
+  # The permission required to broadcast
+  # /broadcast <text>
+  send_permission: 'broadcast.send'
+
+  # The permission required to reload this config
+  # /broadcast reload
+  reload_permission: 'broadcast.reload'
+
+messages:
+  # The prefix of all plugin messages
+  # [Defaults to &6&l&nBroadcast&7 »&f]
+  prefix: '&6&l&nBroadcast&7 »&f'
