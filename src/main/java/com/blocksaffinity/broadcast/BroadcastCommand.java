@@ -7,6 +7,9 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.command.CommandSender;
 import org.jspecify.annotations.NonNull;
+
+import java.util.Collection;
+import java.util.List;
 import java.util.logging.Level;
 
 import java.util.Objects;
@@ -33,9 +36,7 @@ public class BroadcastCommand implements BasicCommand {
 
         if (args.length == 0 || Objects.equals(args[0], "help") || Objects.equals(args[0], "usage"))
         {
-            sender.sendRichMessage("<gold>Broadcast Usage:\n" +
-                    "<dark_gray> - <gold>/broadcast <red>reload\n" +
-                    "<dark_gray> - <gold>/broadcast <red><text>");
+            sender.sendRichMessage("<gold>Broadcast Usage:\n<dark_gray> - <gold>/broadcast <red>reload\n<dark_gray> - <gold>/broadcast <red><text>");
             return;
         }
 
@@ -44,7 +45,7 @@ public class BroadcastCommand implements BasicCommand {
             plugin.reloadConfig();
             reloadConfig();
             plugin.getLogger().log(Level.INFO, "Reloaded configuration.");
-            sender.sendRichMessage(ColorParser.parse(prefix) + " <green>Reloaded configuration.");
+            sender.sendMessage(ColorParser.parse(prefix + " &aReloaded configuration."));
         }
 
         else
@@ -57,5 +58,13 @@ public class BroadcastCommand implements BasicCommand {
                     );
             plugin.getServer().broadcast(message);
         }
+    }
+
+    @Override
+    public @NonNull Collection<String> suggest(final @NonNull CommandSourceStack source, final String[] args) {
+        if (args.length == 0) {
+            return List.of("reload", "help");
+        }
+        return List.of();
     }
 }

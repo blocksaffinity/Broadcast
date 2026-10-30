@@ -9,5 +9,9 @@ behaviour:
 
 messages:
   # The prefix of all plugin messages
+  # This shouldn't end in a space unless intentional (otherwise you get a double space)
   # [Defaults to &6&l&nBroadcast&7 »&f]
   prefix: '&6&l&nBroadcast&7 »&f'
+
+# Don't change this
+config-version: '0.1.0'
